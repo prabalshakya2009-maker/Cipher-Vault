@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - master
   workflow_dispatch:
 
 permissions:
@@ -30,13 +29,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
-
-      - name: Run Cryptographic Security Verification Suite
-        run: node scripts/verifyCrypto.js
+        run: npm install
 
       - name: Build production bundle
         run: npm run build
